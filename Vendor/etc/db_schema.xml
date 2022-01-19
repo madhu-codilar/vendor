@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="codilar_vendor" resource="default" engine="innodb" comment="Codilar Vendor information is stored here">
+        <column xsi:type="smallint" name="entity_id" unsigned="false" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="smallint" name="is_active" unsigned="false" nullable="false" identity="false" default="1" comment="is Vendor active"/>
+        <column xsi:type="varchar" name="vendor_name" nullable="false" length="255" comment="Vendor Name"/>
+        <column xsi:type="varchar" name="website" nullable="false" length="255" comment="Vendor website"/>
+        <column xsi:type="mediumtext" name="description" nullable="true" comment="Vendor Description"/>
+        <column xsi:type="timestamp" name="created_at"  on_update="false" default="CURRENT_TIMESTAMP" comment="creation time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>
+

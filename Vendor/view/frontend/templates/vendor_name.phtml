@@ -1,0 +1,4 @@
+<?php 
+if ($block->getVendorname()!='No Vendor') { ?>
+<h4><?php  echo "Sold By- "?> <a href="<?php echo $block->getVendorUrl(). 'entity_id/' . $block->getAttributeID() ?>"><?php echo $block->getVendorname()?></a></h4>
+<?php }?>

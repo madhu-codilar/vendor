@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">vendor_form.vendor_form_data_source</item>
+        </item>
+        <item name="ajaxSave" xsi:type="boolean">false</item>
+        <item name="label" xsi:type="string" translate="true">General Information</item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+            <item name="back" xsi:type="array">
+                <item name="name" xsi:type="string">back</item>
+                <item name="label" xsi:type="string" translate="true">Back</item>
+                <item name="class" xsi:type="string">secondary</item>
+                <item name="url" xsi:type="string">vendor/index/index</item>
+            </item>
+            <item name="save" xsi:type="array">
+                <item name="name" xsi:type="string">save</item>
+                <item name="label" xsi:type="string" translate="true">Save</item>
+                <item name="class" xsi:type="string">primary</item>
+                <item name="url" xsi:type="string">vendor/index/save</item>
+            </item>
+        </item>
+    </argument>
+    <settings>
+        <namespace>vendor_form</namespace>
+        <dataScope>data</dataScope>
+        <deps>
+            <dep>vendor_form.vendor_form_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="vendor_form_data_source">
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+        <settings>
+            <submitUrl path="vendor/index/save"/>
+        </settings>
+        <dataProvider class="Codilar\Vendor\Ui\Component\EditDataProvider"
+                      name="vendor_form_data_source">
+            <settings>
+                <requestFieldName>entity_id</requestFieldName>
+                <primaryFieldName>entity_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+
+    <fieldset name="general">
+        <settings>
+            <label/>
+        </settings>
+        <field name="is_active" sortOrder="10" formElement="checkbox">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">vendor</item>
+                    <item name="default" xsi:type="number">1</item>
+                </item>
+            </argument>
+            <settings>
+                <dataType>boolean</dataType>
+                <label translate="true">Enable Vendor</label>
+                <dataScope>is_active</dataScope>
+            </settings>
+            <formElements>
+                <checkbox>
+                    <settings>
+                        <valueMap>
+                            <map name="false" xsi:type="number">0</map>
+                            <map name="true" xsi:type="number">1</map>
+                        </valueMap>
+                        <prefer>toggle</prefer>
+                    </settings>
+                </checkbox>
+            </formElements>
+        </field>
+        <field name="vendor_name"  formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">vendor</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Vendor Name</label>
+                <dataScope>vendor_name</dataScope>
+            </settings>
+        </field>
+        <field name="website"  formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">vendor</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Website</label>
+                <dataScope>website</dataScope>
+            </settings>
+        </field>
+        <field name="description"  formElement="input">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="source" xsi:type="string">vendor</item>
+                    <item name="formElement" xsi:type="string">textarea</item>
+                </item>
+            </argument>
+            <settings>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+                <dataType>text</dataType>
+                <label translate="true">Description</label>
+                <dataScope>description</dataScope>
+            </settings>
+        </field>
+    </fieldset>
+</form>
