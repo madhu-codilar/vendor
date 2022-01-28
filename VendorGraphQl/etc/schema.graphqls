@@ -1,0 +1,20 @@
+type Query {
+    vendorlist: [vendorlist] @resolver(class: "Codilar\\VendorGraphQl\\Model\\Resolver\\Details") @doc(description: "The vendorlist query returns information about a vendor")
+    productslist (
+        vendor_id: Int @doc(description: "Id of the vendor")
+    ): productslist @resolver(class: "Codilar\\VendorGraphQl\\Model\\Resolver\\Products") @doc(description: "The products list query returns information about products of that vendor")
+}
+
+type vendorlist @doc(description: "vendorlist defines the vendor name and other related details") {
+    entity_id: Int
+    vendor_name: String
+    description: String
+}
+
+
+type productslist @doc(description: "products list graphql gather data of products  information") {
+    fetchRecords : [ProductRecord] @doc(description: "An array of products information")
+}
+type ProductRecord @doc(description: "products information") {
+    name: String
+}
