@@ -1,0 +1,12 @@
+type Query {
+    salesOrder (
+        id: Int @doc(description: "Id of the Sales Order")
+    ): SalesOrder @resolver(class: "Codilar\\OrderGraphQl\\Model\\Resolver\\Items") @doc(description: "The Sales Order query returns information about a Sales order")
+}
+ 
+type SalesOrder @doc(description: "Sales Order graphql gather Data of specific order information") {
+    items: [ProductInterface] @doc(description: "An array of all items data of order") 
+}
+
+
+ 
